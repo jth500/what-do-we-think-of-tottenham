@@ -25,3 +25,7 @@ arsenal/
 
 ## Model
 The first model is a simple 5-layer feed-forward CNN. It achieves 90% accuracy on the test set. See notebooks/train_simple.ipynb
+
+Example preds
+
+![preds](https://github.com/jth500/what-do-we-think-of-tottenham/blob/main/output.png)
