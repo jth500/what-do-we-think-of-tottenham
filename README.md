@@ -19,8 +19,8 @@ arsenal/
 ```
 
 ### Example of data pertubation
+![original](https://github.com/jth500/what-do-we-think-of-tottenham/blob/main/arsenal_original.png) ![pert 1](https://github.com/jth500/what-do-we-think-of-tottenham/blob/main/arsenal_aug_12.png) ![pert 3](https://github.com/jth500/what-do-we-think-of-tottenham/blob/main/arsenal_aug_17.png) ![pert 4](https://github.com/jth500/what-do-we-think-of-tottenham/blob/main/arsenal_aug_3.png)
 
-![original]([image1_url](https://github.com/jth500/what-do-we-think-of-tottenham/blob/main/arsenal_original.png)) ![pert 1]([image2_url](https://github.com/jth500/what-do-we-think-of-tottenham/blob/main/arsenal_aug_12.png)) ![pert 3]([image3_url](https://github.com/jth500/what-do-we-think-of-tottenham/blob/main/arsenal_aug_17.png)) ![pert 4]([image3_url](https://github.com/jth500/what-do-we-think-of-tottenham/blob/main/arsenal_aug_3.png))
 
 
 ## Model
