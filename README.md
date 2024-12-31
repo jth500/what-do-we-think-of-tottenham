@@ -18,5 +18,10 @@ arsenal/
     ...
 ```
 
+### Example of data pertubation
+
+![original]([image1_url](https://github.com/jth500/what-do-we-think-of-tottenham/blob/main/arsenal_original.png)) ![pert 1]([image2_url](https://github.com/jth500/what-do-we-think-of-tottenham/blob/main/arsenal_aug_12.png)) ![pert 3]([image3_url](https://github.com/jth500/what-do-we-think-of-tottenham/blob/main/arsenal_aug_17.png)) ![pert 4]([image3_url](https://github.com/jth500/what-do-we-think-of-tottenham/blob/main/arsenal_aug_3.png))
+
+
 ## Model
 The first model is a simple 5-layer feed-forward CNN. It achieves 90% accuracy on the test set. See notebooks/train_simple.ipynb
