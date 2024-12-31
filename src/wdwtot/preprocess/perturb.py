@@ -1,5 +1,6 @@
 import os
 import random
+from pathlib import Path
 
 import cv2
 import numpy as np
@@ -134,33 +135,34 @@ def apply_additional_augmentations(image):
     return additional_images
 
 
-# Function to process images in a folder
 def process_folder(input_folder, output_folder):
     for subdir, _, files in os.walk(input_folder):
         for file in files:
             if file.lower().endswith(".png"):
-                input_path = os.path.join(subdir, file)
-                output_subdir = os.path.join(
-                    output_folder, os.path.relpath(subdir, input_folder)
-                )
-                os.makedirs(output_subdir, exist_ok=True)
+                input_path = Path(os.path.join(subdir, file))
+                class_name = input_path.stem.split("_")[0]  # Extract class name
+                class_output_dir = os.path.join(output_folder, class_name)
+                os.makedirs(class_output_dir, exist_ok=True)
 
                 image = Image.open(input_path)
-                augmented_images = augment_image(image)
 
-                # Save original and augmented images
-                base_name = os.path.splitext(file)[0]
-                image.save(os.path.join(output_subdir, f"{base_name}_original.png"))
+                # Ensure RGBA mode to handle transparency
+                if image.mode != "RGBA":
+                    image = image.convert("RGBA")
+
+                # Convert transparent background to white and change to RGB
+                background = Image.new(
+                    "RGBA", image.size, (255, 255, 255, 255)
+                )  # White background
+                image = Image.alpha_composite(background, image).convert("RGB")
+
+                # Save the original image (with white background) as RGB
+                base_name = input_path.stem
+                image.save(os.path.join(class_output_dir, f"{base_name}_original.png"))
+
+                # Generate and save augmented images
+                augmented_images = augment_image(image)
                 for idx, aug_image in enumerate(augmented_images):
                     aug_image.save(
-                        os.path.join(output_subdir, f"{base_name}_aug_{idx + 1}.png")
+                        os.path.join(class_output_dir, f"{base_name}_aug_{idx + 1}.png")
                     )
-
-
-# Main function
-if __name__ == "__main__":
-    input_folder = "/Users/toby/Dev/what-do-we-think-of-tottenham/data/top-5-football-leagues"  # Replace with your input folder
-    output_folder = "/Users/toby/Dev/what-do-we-think-of-tottenham/data/processed"  # Replace with your output folder
-    os.makedirs(output_folder, exist_ok=True)
-
-    process_folder(input_folder, output_folder)

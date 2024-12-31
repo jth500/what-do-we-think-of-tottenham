@@ -1,0 +1,19 @@
+name: logo-detection
+channels: 
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip
+  - numpy
+  - requests
+  - pandas
+  - matplotlib
+  - tensorboard
+  - jupyterlab
+  - python-multipart
+  - pytorch
+  - torchvision
+  - pip:
+    - opencv-python
+    - tqdm
