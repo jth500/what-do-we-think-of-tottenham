@@ -1,5 +1,22 @@
 # what-do-we-think-of-tottenham
 
-Football team logo classification with a convolutional neural network.
+Football team logo classification with a vanilla 5-layer convolutional neural network. Achieves 90% accuracy on perturbed test dataset.
 
-100 input images taken from Alex Teboul on [Kaggle](https://www.kaggle.com/datasets/alexteboul/top-5-football-leagues-club-logos). Pertubations to the images are applied to create a dataset of 2400 images.
+## Data
+The starting dataset is 100 logos for teams in Europe's top 5 leagues, taken from Alex Teboul on [Kaggle](https://www.kaggle.com/datasets/alexteboul/top-5-football-leagues-club-logos). The data are then augmented by perturbing the images, producing a dataset of 2400 images. To reproduce, move input folder to /data, and then run scripts/preprocess_imgs.py. This produces the following folder structure
+
+```
+ac-milan/
+    ac-milan_original.png  
+    ac-milan_aug_1.png    
+    ac-milan_aug_2.png
+    ...
+arsenal/
+    arsenal_original.png
+    arsenal_aug_1.png
+    arsenal_aug_2.png
+    ...
+```
+
+## Model
+The first model is a simple 5-layer feed-forward CNN. It achieves 90% accuracy on the test set. See notebooks/train_simple.ipynb
